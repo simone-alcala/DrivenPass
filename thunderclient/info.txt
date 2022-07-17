@@ -1,0 +1,93 @@
+/signup
+POST
+{email, password}
+201
+
+/signin
+POST
+{email, password}
+200 + token
+
+/credentials
+POST
+header with token
+{title, url, login, password}
+201
+
+/credentials
+GET
+header with token
+200 + data
+
+/credentials/:id
+GET
+header with token
+200 + credenciais
+
+/credentials/:id
+DELETE
+header with token
+200
+
+/notes
+POST
+header with token
+{title, note}
+retorna 401, 409, 422, 201, demais retorna 500
+
+/notes
+GET
+header with token
+200 + data
+
+/notes/:id
+GET
+header with token
+200 + notes
+
+/notes/:id
+DELETE
+header with token
+200
+
+/cards
+POST
+header with token
+{title, number, name, cvv, expiration, password, isVirtual, type}
+201
+
+/cards
+GET
+header with token
+200 + data
+
+/cards/:id
+GET
+header with token
+200
+
+/cards/:id
+DELETE
+header with token
+200
+
+/wifi
+POST
+header with token
+{title, name, password}
+201
+
+/wifi
+GET
+header with token
+200 + data
+
+/wifi/:id
+GET
+header with token
+200 + data
+
+/wifi/:id
+DELETE
+header with token
+200
