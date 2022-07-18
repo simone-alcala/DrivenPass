@@ -15,11 +15,19 @@ export async function create(createData: DataCardCreate) {
 }
 
 export async function getAll(userId: number) {
-  return await repository.findAll(userId);
+  const cards = await repository.findAll(userId);
+  cards.map((card) => {
+    card.password = decryptPassword(card.password);
+    card.cvv = decryptPassword(card.cvv);
+  });
+  return cards;
 }
 
 export async function getById(id: number, userId: number) {
-  return await repository.findById(id, userId);
+  const card = await repository.findById(id, userId);
+  card.password = decryptPassword(card.password);
+  card.cvv = decryptPassword(card.cvv);
+  return card;
 }
 
 export async function deleteById(id: number, userId: number) {

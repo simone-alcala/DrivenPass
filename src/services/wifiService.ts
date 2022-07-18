@@ -11,11 +11,17 @@ export async function create(createData: DataWifiCreate) {
 }
 
 export async function getAll(userId: number) {
-  return await repository.findAll(userId);
+  const wifis =  await repository.findAll(userId);
+  wifis.map((wifi) => {
+    wifi.password = decryptPassword(wifi.password);
+  });
+  return wifis;
 }
 
 export async function getById(id: number, userId: number) {
-  return await repository.findById(id, userId);
+  const wifi = await repository.findById(id, userId);
+  wifi.password = decryptPassword(wifi.password);
+  return wifi;
 }
 
 export async function deleteById(id: number, userId: number) {

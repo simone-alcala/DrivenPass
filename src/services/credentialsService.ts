@@ -13,11 +13,17 @@ export async function create(createData: DataCredentialCreate) {
 }
 
 export async function getAll(userId: number) {
-  return await repository.findAll(userId);
+  const credentials =  await repository.findAll(userId);
+  credentials.map((credential) => {
+    credential.password = decryptPassword(credential.password);
+  });
+  return credentials;
 }
 
 export async function getById(id: number, userId: number) {
-  return await repository.findById(id, userId);
+  const credential = await repository.findById(id, userId);
+  credential.password = decryptPassword(credential.password);
+  return credential;
 }
 
 export async function deleteById(id: number, userId: number) {
