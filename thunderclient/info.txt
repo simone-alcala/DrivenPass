@@ -33,7 +33,6 @@ header with token
 POST
 header with token
 {title, note}
-retorna 401, 409, 422, 201, demais retorna 500
 
 /notes
 GET
