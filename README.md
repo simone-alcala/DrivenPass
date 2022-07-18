@@ -1,4 +1,4 @@
-# Getting started with Monster Games
+# Getting started with DrivenPass
 
 ## `.env SETUP`
 
